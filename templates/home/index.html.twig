@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Excuses De Dev : bienvenue !{% endblock %}
+
+{% block body %}
+
+<div class="px-4 py-3 my-3 text-center">
+    <img class="d-block mx-auto mb-4 img-fluid rounded" src="{{ asset('img/hero.jpg') }}" alt="excusesdedev">
+    <div class="row mb-3">
+        <h1 class="fw-bold">Excuses de Dev</h1>
+        <div class="col mx-auto">
+            <p class="mb-4">
+                Vous êtes développeur web, back-end, front-end, ReactJS, Symfony, Angular, truc, bidule ??! Vous êtes
+                dev du dimanche, dev senior, dev junior, etc.<br>
+                Je suis certain que vous avez déjà employé des excuses bidons pour un projet, une réunion ou un
+                rendez-vous... Ca serait sympa si vous pouviez nous en faire profiter :)
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{{ path('home') }}" type="button" class="btn btn-primary btn-lg px-4 gap-3">Afficher une excuse au hazard</a>
+                <a href="{{ path('excuse_new') }}" type="button" class="btn btn-outline-warning btn-lg px-4">Ajouter votre excuse à la base</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 d-flex justify-content-center">
+        <div class="col-8 border rounded bg-light pt-2">
+            {% for excuse in excuses %}
+                <p class="h3">
+                    {{ excuse.contenu }}
+                </p>
+                <p>
+                    Par {{ excuse.auteur }}, le {{ excuse.createdAt|date('d-m-Y à H:i:s') }}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

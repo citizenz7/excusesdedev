@@ -1,19 +1,74 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+<html class="h-100">
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="citizenz7">
+    <meta name="generator" content="Symfony5">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Font Awesome css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="d-flex flex-column h-100">
+
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <span class="fs-1 fw-bold">excusesdedev.infos.st</span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="{{ path('home') }}"
+                        class="nav-link {% if current_menu is defined and current_menu == 'accueil' %} active {% endif %}"
+                        aria-current="page">Accueil</a></li>
+                <li class="nav-item"><a href="{{ path('excuse_index') }}"
+                        class="nav-link {% if current_menu is defined and current_menu == 'excuses' %} active {% endif %}">Toutes
+                        les excuses</a></li>
+                <li class="nav-item"><a href="{{ path('excuse_new') }}"
+                        class="nav-link {% if current_menu is defined and current_menu == 'excuseNew' %} active {% endif %}">Ajouter
+                        une excuse</a></li>
+                <li class="nav-item"><a href="{{ path('apropos') }}"
+                        class="nav-link {% if current_menu is defined and current_menu == 'apropos' %} active {% endif %}">A
+                        propos</a></li>
+            </ul>
+        </header>
+    </div>
+
+    <main class="flex-shrink-0">
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container d-flex justify-content-center">
+            <span class="text-muted small">
+                excusesdedev.infos.st - 2021 -
+                Some rights reserved -
+                <a class="text-decoration-none text-muted" href="{{ path('admin') }}">Administration</a> -
+                Images : <a href="https://pixabay.com" target="_blank"
+                    class="text-decoration-none text-muted">Pixabay</a>
+            </span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+</body>
+
 </html>

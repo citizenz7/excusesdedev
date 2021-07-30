@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une excuse{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col">
+        <h2>Ajouter une excuse</h2>
+        <p>Merci de libeller votre excuse en commençant par : "Je peux pas " ... et la suite vous appartient :)<br>
+            <span class="text-muted">Exemple : je peux pas j'ai piscine</span>
+        </p>
+        <p class="text-success">
+            <i class="fas fa-exclamation-circle"></i> Votre excuse sera visible dans la liste une fois celle-ci validée par l'admin.
+        </p>
+        {{ include('excuse/_form.html.twig') }}
+    </div>
+</div>
+
+{% endblock %}

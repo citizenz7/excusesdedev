@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Excuse{% endblock %}
+
+{% block body %}
+    <div class="row mt-3">
+        <div class="col">
+
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2>
+                        {{ excuse.contenu }}
+                    </h2>
+                    Le {{ excuse.createdAt ? excuse.createdAt|date('d-m-Y H:i:s') : '' }}, 
+                    Par {{ excuse.auteur }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col d-flex justify-content-center">
+            <a class="btn btn-lg btn-primary px-5" href="{{ path('excuse_index') }}">Retour à la liste des excuses</a>
+        </div>
+    </div>
+{% endblock %}
