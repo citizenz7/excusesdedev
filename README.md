@@ -14,9 +14,11 @@ symfony check:requirements
 ```
 
 ### Lancer l'environnement de développement
+```bash
 composer install
 docker-compose up -d
 symfony serve -d
+```
 
 ### Création du compte admin
 ```bash
