@@ -5,7 +5,14 @@
 {% block body %}
 <div class="row">
     <div class="col">
-        <h2>Liste des excuses de dev</h2>
+        <h2>Liste des excuses de développeur</h2>
+
+        {% for message in app.flashes('message') %}
+            <div class="alert alert-success alert-dismissible fade show mt-3 mb-5" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
 
         <div class="row row-cols-1 row-cols-md-3 g-4">
             {% for excuse in excuses %}

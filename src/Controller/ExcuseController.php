@@ -23,19 +23,19 @@ class ExcuseController extends AbstractController
         ExcuseRepository $excuseRepository,
         PaginatorInterface $paginator,
         Request $request
-        ): Response {
-            $data = $excuseRepository->findBy([], ['id' => 'DESC']);
+    ): Response {
+        $data = $excuseRepository->findBy([], ['id' => 'DESC']);
 
-            $excuses = $paginator->paginate(
-                $data,
-                $request->query->getInt('page', 1),
-                9
-            );
+        $excuses = $paginator->paginate(
+            $data,
+            $request->query->getInt('page', 1),
+            9
+        );
 
-            return $this->render('excuse/index.html.twig', [
-                'excuses' => $excuses,
-                'current_menu' => 'excuses',
-            ]);
+        return $this->render('excuse/index.html.twig', [
+            'excuses' => $excuses,
+            'current_menu' => 'excuses',
+        ]);
     }
 
     /**
@@ -54,6 +54,12 @@ class ExcuseController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($excuse);
             $entityManager->flush();
+
+            $this->addFlash(
+                'message',
+                'Votre excuse a bien été enregistrée. Elle va être modérée par l\'admin dans 
+                les plus brefs délais. Merci de votre participation.'
+            );
 
             return $this->redirectToRoute('excuse_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -111,7 +117,7 @@ class ExcuseController extends AbstractController
      */
     public function delete(Request $request, Excuse $excuse): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$excuse->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $excuse->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($excuse);
             $entityManager->flush();
