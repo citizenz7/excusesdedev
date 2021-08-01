@@ -34,7 +34,8 @@ class ExcuseCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setDefaultSort(['id' => 'DESC']);
+            ->setDefaultSort(['id' => 'DESC'])
+            ->setPaginatorPageSize(12)
+            ->setPaginatorRangeSize(3);
     }
-
 }

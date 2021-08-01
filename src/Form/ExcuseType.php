@@ -27,8 +27,7 @@ class ExcuseType extends AbstractType
                 'attr' => [
                     'class' => 'form-control mb-3'
                 ]
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

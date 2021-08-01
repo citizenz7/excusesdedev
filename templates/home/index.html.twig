@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div class="px-4 py-3 my-3 text-center">
+<div class="px-4 py-3 text-center">
     <img class="d-block mx-auto mb-4 img-fluid rounded" src="{{ asset('img/hero.jpg') }}" alt="excusesdedev">
     <div class="row mb-3">
         <h1 class="fw-bold">Excuses de Dev</h1>
@@ -14,6 +14,9 @@
                 dev du dimanche, dev senior, dev junior, etc.<br>
                 Je suis certain que vous avez déjà employé des excuses bidons pour un projet, une réunion ou un
                 rendez-vous... Ca serait sympa si vous pouviez nous en faire profiter :)
+            </p>
+            <p class="mb-4">
+                Il y a <b>{{ nbexcuses|length }}</b> excuses dans la base.
             </p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
                 <a href="{{ path('home') }}" type="button" class="btn btn-primary btn-lg px-4 gap-3">Afficher une excuse au hazard</a>

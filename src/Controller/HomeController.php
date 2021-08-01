@@ -14,6 +14,8 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
+        $nbexcuses = $this->getDoctrine()->getRepository(Excuse::class)->findAll();
+
         $repository = $this->getDoctrine()->getRepository(Excuse::class);
 
         $excuses = $repository->createQueryBuilder('a')
@@ -24,6 +26,7 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'excuses' => $excuses,
+            'nbexcuses' => $nbexcuses,
             'current_menu' => 'accueil',
         ]);
     }
