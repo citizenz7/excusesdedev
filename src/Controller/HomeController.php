@@ -14,12 +14,16 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        $nbexcuses = $this->getDoctrine()->getRepository(Excuse::class)->findAll();
-
         $repository = $this->getDoctrine()->getRepository(Excuse::class);
+
+        $nbexcuses = $repository->createQueryBuilder('a')
+            ->andWhere('a.isActive = true')
+            ->getQuery()
+            ->execute();
 
         $excuses = $repository->createQueryBuilder('a')
             ->orderBy('RAND()')
+            ->andWhere('a.isActive = true')
             ->setMaxResults(1)
             ->getQuery()
             ->execute();
